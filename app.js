@@ -6,6 +6,7 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const movie = require('./routes/movie');
+const director = require('./routes/director');
 
 const app = express();
 
@@ -17,6 +18,9 @@ const db = require('./helper/db.js')();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// Middleware
+//const verifyToken = require('./middleware/verify-token');
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -24,7 +28,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+//app.use('/api', verifyToken);
 app.use('/api/movies', movie);
+app.use('/api/directors', director);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) =>{

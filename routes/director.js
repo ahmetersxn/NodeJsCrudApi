@@ -29,10 +29,11 @@ router.get('/', (req, res) => {
         {
             $unwind: {
                 path: '$movies',
-                preserveNullAndEmptyArrays: true
+                preserveNullAndEmptyArrays: true // ALL MOVIES IN SAME DIRECTOR
             }
         },
         {
+            // IN MOVIES TOGETHER
             $group: {
                 _id: {
                     _id: '$_id',
@@ -40,6 +41,7 @@ router.get('/', (req, res) => {
                     surname: '$surname',
                     bio: '$bio'
                 },
+                // IN MOVIES PUSH HERE
                 movies: {
                     $push: '$movies'
                 }
@@ -65,6 +67,7 @@ router.get('/', (req, res) => {
 router.get('/:director_id', (req, res) => {
     const promise = Director.aggregate([
         {
+            // JUST FIND ONE ID DIRECTOR
             $match: {
                 '_id': mongoose.Types.ObjectId(req.params.director_id)
             }

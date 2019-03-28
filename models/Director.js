@@ -4,6 +4,8 @@ const Schema  = mongoose.Schema;
 const DirectorSchema = new Schema({
     name: {
         type: String,
+        required:  [true, '`{PATH}` alanı zorunludur.'],
+        unique: true,
         maxlength: 60,
         minlength: 2
     },
