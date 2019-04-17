@@ -8,13 +8,6 @@ const Director = require('../models/Director');
 router.post('/', (req, res, next) => {
     const director = new Director(req.body);
     const promise = director.save();
-
-    console.log(req.body);
-
-    console.log("-------------");
-
-    console.log(promise);
-
     promise.then((data) => {
         res.json(data);
     }).catch((err) => {

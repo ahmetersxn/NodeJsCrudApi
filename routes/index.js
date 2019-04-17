@@ -10,6 +10,7 @@ const User = require('../models/User');
 /* GET home page. */
 router.get('/', (req, res, next) => {
   res.render('index', { title: 'Express' });
+  console.log("dasfdasfdas");
 });
 
 router.post('/register', (req, res, next) => {
@@ -32,14 +33,6 @@ router.post('/register', (req, res, next) => {
 
 router.post('/authenticate', (req, res) => {
   const { username, password } = req.body;
-
-
-  console.log(req)
-
-
-  console.log("--------")
-
-  console.log(username,password)
 
   User.findOne({
     username
