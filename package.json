@@ -19,7 +19,7 @@
     "jade": "~1.11.0",
     "jsonwebtoken": "^8.1.0",
     "mocha": "^4.1.0",
-    "mongoose": "^4.13.7",
+    "mongoose": "^4.13.21",
     "morgan": "~1.9.0",
     "nodemon": "^1.18.10",
     "pug": "^2.0.3",
